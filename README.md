@@ -3,5 +3,5 @@
 Example compiling for day1:
 
 ```
-g++ -std=c++17 -O2 day1/solved day/src.cpp
+g++ -std=c++17 -O2 day1/solved day1/src.cpp
 ```
