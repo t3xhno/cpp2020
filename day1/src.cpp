@@ -1,11 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <unordered_set>
+#include <vector>
 using namespace std;
 
-int solve() {
+int solve_1() {
     unordered_set<int> uset;
-    ifstream file("./day1/input.dat");
+    ifstream file("day1/input.dat");
     if (file.is_open()) {
         for (string number; getline(file, number);) {
             int num{ stoi(number) };
@@ -13,18 +14,66 @@ int solve() {
                 file.close();
                 return num * (2020 - num);
             }
-            else uset.insert(num);
+            uset.insert(num);
         }
     }
     if (file.is_open()) file.close();
     return 0;
 }
 
+int solve_2_naive() {
+    ifstream file;
+    int number;
+    vector<int> myVec;
+    
+    file.open("day1/input.dat");
+    while (file >> number) {
+        myVec.push_back(number);
+    }
+    file.close();
+    for (int i = 0; i < myVec.size() - 2; i++) {
+        for (int j = i + 1; j < myVec.size() - 1; j++) {
+            for (int k = j + 1; k < myVec.size(); k++) {
+                if (myVec[i] + myVec[j] + myVec[k] == 2020) {
+                    return myVec[i] * myVec[j] * myVec[k];
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+int solve_2_hashing() {
+    ifstream file;
+    int number;
+    vector<int> myVec;
+    
+    file.open("day1/input.dat");
+    while (file >> number) {
+        myVec.push_back(number);
+    }
+
+    for (int i = 0; i < myVec.size() - 2; i++) {
+        unordered_set<int> uset;
+        for (int j = i + 1; j < myVec.size(); j++) {
+            if (uset.find(2020 - myVec[i] - myVec[j]) != uset.end()) {
+                file.close();
+                return myVec[i] * myVec[j] * (2020 - myVec[i] - myVec[j]);
+            }
+            uset.insert(myVec[j]);
+        }
+    }
+    if (file.is_open()) file.close();
+    return -1;
+}
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    cout << solve() << '\n';
+    cout << "Part 1: " << solve_1() << '\n';
+    // cout << "Part 2: " << solve_2_naive() << '\n';
+    cout << "Part 2: " << solve_2_hashing() << '\n';
 
     return 0;
 }
