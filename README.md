@@ -1,7 +1,7 @@
 # cpp2020
 
-Compiling with:
+Example compiling for day1:
 
 ```
-lol
+g++ -std=c++17 -O2 day1/solved day/src.cpp
 ```
