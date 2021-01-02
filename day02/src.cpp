@@ -55,7 +55,7 @@ void solve() {
         }
     }
     if (file.is_open()) file.close();
-    cout << "Part 1: " << total_1 << '\n';
+    cout << "\nPart 1: " << total_1 << '\n';
     cout << "Part 2: " << total_2 << '\n';
 }
 
