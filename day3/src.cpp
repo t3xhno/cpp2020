@@ -10,7 +10,8 @@ void solve() {
     if (file.is_open()) {
         for (int k = 0; k < 5; k++) {
             file.clear(); file.seekg(0);
-            int i{ 0 }, j{ 0 }, total{ 0 };
+            int i{ 0 }, j{ 0 };
+            int total{ 0 };
             int i_step{ steps[k][0] }, j_step{ steps[k][1] };
             for (string line; getline(file, line);) {
                 if (i++ % i_step != 0) {
