@@ -3,6 +3,9 @@
 #include <vector>
 using namespace std;
 
+#define rf myRange.first - 1
+#define rs myRange.second - 1
+
 vector<string> split(string line, string delim) {
     size_t pos_start{ 0 }, pos_end{ 0 }, delim_len{ delim.length() };
     string token{ "" };
@@ -30,19 +33,11 @@ pair<int, int> getRange(string myVec) {
     return make_pair(stoi(stringRange[0]), stoi(stringRange[1]));
 }
 
-bool loc(string str, int pos_low, int pos_high, char letter) {
-    if ((str[pos_low] == letter || str[pos_high] == letter)
-        && !(str[pos_low] == letter && str[pos_high] == letter)) {
-        return true;
-    }
-    return false;
-}
-
 void solve() {
     ifstream file;
     int total_1{ 0 }, total_2{ 0 };
     vector<string> myVec;
-    file.open("day2/input.dat");
+    file.open("day02/input.dat");
     if (file.is_open()) {
         for (string line; getline(file, line);) {
             myVec = split(line, " ");
@@ -54,8 +49,7 @@ void solve() {
             if (numOcc >= myRange.first && numOcc <= myRange.second) {
                 total_1++;
             }
-
-            if (loc(pass, myRange.first - 1, myRange.second - 1, letter)) {
+            if (((pass[rf] == letter) + (pass[rs] == letter)) == 1) {
                 total_2++;
             }
         }

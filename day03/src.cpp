@@ -6,7 +6,7 @@ void solve() {
     long long solution_1{ 0 }, solution_2{ 1 };
     int steps[5][2] = {{1, 1}, {1, 3}, {1, 5}, {1, 7}, {2, 1}};
     ifstream file;
-    file.open("./day3/input.dat");
+    file.open("./day03/input.dat");
     if (file.is_open()) {
         for (int k = 0; k < 5; k++) {
             file.clear(); file.seekg(0);

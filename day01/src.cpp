@@ -6,7 +6,7 @@ using namespace std;
 
 int solve_1() {
     unordered_set<int> uset;
-    ifstream file("day1/input.dat");
+    ifstream file("day01/input.dat");
     if (file.is_open()) {
         for (string number; getline(file, number);) {
             int num{ stoi(number) };
@@ -26,7 +26,7 @@ int solve_2_hashing() {
     int number;
     vector<int> myVec;
     
-    file.open("day1/input.dat");
+    file.open("day01/input.dat");
     while (file >> number) {
         myVec.push_back(number);
     }
