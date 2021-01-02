@@ -24,8 +24,7 @@ void solve() {
         }
     }
     if (file.is_open()) file.close();
-    cout << '\n';
-    cout << "Part 1: " << solution_1 << '\n';
+    cout << "\nPart 1: " << solution_1 << '\n';
     cout << "Part 2: " << solution_2 << '\n';
 }
 
