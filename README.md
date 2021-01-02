@@ -22,7 +22,7 @@ all: $(DAYS)
 make $1 && time $1/solved
 ```
 
-`~/.scritpts/advpush`
+`~/.scripts/advpush`
 
 ```bash
 #!/bin/bash
