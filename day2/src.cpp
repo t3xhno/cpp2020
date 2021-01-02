@@ -27,11 +27,8 @@ int countOcc(string str, char letter) {
 }
 
 pair<int, int> getRange(string myVec) {
-    pair<int, int> pairRange{ 0, 0 };
     vector<string> stringRange{ split(myVec, "-") };
-    pairRange.first = stoi(stringRange[0]);
-    pairRange.second = stoi(stringRange[1]);
-    return pairRange;
+    return make_pair(stoi(stringRange[0]), stoi(stringRange[1]));
 }
 
 bool loc(string str, int pos_low, int pos_high, char letter) {
