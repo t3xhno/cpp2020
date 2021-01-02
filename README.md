@@ -65,3 +65,11 @@ ROOT
 * makefile
 * .gitignore
 * README.md
+
+The *.gitignore*, for what it's worth:
+
+```.gitignore
+**/solved
+makefile
+.vscode
+```
