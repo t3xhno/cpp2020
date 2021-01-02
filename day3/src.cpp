@@ -3,16 +3,28 @@
 #include <string>
 using namespace std;
 
+#define ll long long
+
 void solve() {
-    int solution_1{ 0 }, solution_2{ 0 };
+    ll solution_1{ 0 }, solution_2{ 1 };
+    int steps[5][2] = {{1, 1}, {1, 3}, {1, 5}, {1, 7}, {2, 1}};
     ifstream file;
     file.open("./day3/input.dat");
     if (file.is_open()) {
-        int i{ 0 }, j{ 0 };
-        for (string line; getline(file, line);) {
-            if (i++ == 0) continue;
-            j += 3;
-            if (line[j % line.length()] == '#') solution_1++;
+        for (int k = 0; k < 5; k++) {
+            file.clear(); file.seekg(0);
+            int i{ 0 }, j{ 0 };
+            int total{ 0 };
+            int i_step{ steps[k][0] }, j_step{ steps[k][1] };
+            for (string line; getline(file, line);) {
+                if (i++ % i_step != 0) {
+                    continue;
+                }
+                if (line[j] == '#') total++;
+                j += j_step; j %= line.length();
+            }
+            if (k == 1) solution_1 = total;
+            solution_2 *= total;
         }
     }
     if (file.is_open()) file.close();
