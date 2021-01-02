@@ -22,8 +22,8 @@ vector<string> split(string line, string delim) {
 
 int countOcc(string str, char letter) {
     int total{ 0 };
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == letter) total++;
+    for (auto i: str) {
+        total += i == letter;
     }
     return total;
 }
@@ -45,13 +45,8 @@ void solve() {
             char letter{ myVec[1][0] };
             string pass = myVec[2];
             int numOcc{ countOcc(pass, letter) };
-
-            if (numOcc >= myRange.first && numOcc <= myRange.second) {
-                total_1++;
-            }
-            if (((pass[rf] == letter) + (pass[rs] == letter)) == 1) {
-                total_2++;
-            }
+            total_1 += numOcc >= myRange.first && numOcc <= myRange.second;
+            total_2 += ((pass[rf] == letter) + (pass[rs] == letter)) == 1;
         }
     }
     if (file.is_open()) file.close();
