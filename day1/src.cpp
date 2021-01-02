@@ -21,28 +21,6 @@ int solve_1() {
     return 0;
 }
 
-int solve_2_naive() {
-    ifstream file;
-    int number;
-    vector<int> myVec;
-    
-    file.open("day1/input.dat");
-    while (file >> number) {
-        myVec.push_back(number);
-    }
-    file.close();
-    for (int i = 0; i < myVec.size() - 2; i++) {
-        for (int j = i + 1; j < myVec.size() - 1; j++) {
-            for (int k = j + 1; k < myVec.size(); k++) {
-                if (myVec[i] + myVec[j] + myVec[k] == 2020) {
-                    return myVec[i] * myVec[j] * myVec[k];
-                }
-            }
-        }
-    }
-    return -1;
-}
-
 int solve_2_hashing() {
     ifstream file;
     int number;
@@ -72,7 +50,6 @@ int main() {
     cin.tie(NULL);
 
     cout << "Part 1: " << solve_1() << '\n';
-    // cout << "Part 2: " << solve_2_naive() << '\n';
     cout << "Part 2: " << solve_2_hashing() << '\n';
 
     return 0;

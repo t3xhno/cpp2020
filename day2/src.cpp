@@ -26,6 +26,14 @@ int countOcc(string str, char letter) {
     return total;
 }
 
+pair<int, int> getRange(string myVec) {
+    pair<int, int> pairRange{ 0, 0 };
+    vector<string> stringRange{ split(myVec, "-") };
+    pairRange.first = stoi(stringRange[0]);
+    pairRange.second = stoi(stringRange[1]);
+    return pairRange;
+}
+
 bool loc(string str, int pos_low, int pos_high, char letter) {
     if ((str[pos_low] == letter || str[pos_high] == letter)
         && !(str[pos_low] == letter && str[pos_high] == letter)) {
@@ -42,16 +50,16 @@ void solve() {
     if (file.is_open()) {
         for (string line; getline(file, line);) {
             myVec = split(line, " ");
-            vector<string> stringRange{ split(myVec[0], "-") };
+            pair<int, int> myRange{ getRange(myVec[0]) };
             char letter{ myVec[1][0] };
             string pass = myVec[2];
             int numOcc{ countOcc(pass, letter) };
 
-            if (numOcc >= stoi(stringRange[0]) && numOcc <= stoi(stringRange[1])) {
+            if (numOcc >= myRange.first && numOcc <= myRange.second) {
                 total_1++;
             }
 
-            if (loc(pass, stoi(stringRange[0]) - 1, stoi(stringRange[1]) - 1, letter)) {
+            if (loc(pass, myRange.first - 1, myRange.second - 1, letter)) {
                 total_2++;
             }
         }
